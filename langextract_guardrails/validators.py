@@ -14,6 +14,7 @@ import logging
 import re
 from dataclasses import dataclass
 from typing import Any
+import copy
 
 import jsonschema
 from json_repair import repair_json
@@ -104,10 +105,13 @@ class JsonSchemaValidator(GuardrailValidator):
         Returns:
             A new schema dict with strict enforcement applied.
         """
-        import copy
 
         def _enforce(node: dict[str, Any]) -> dict[str, Any]:
-            if node.get("type") == "object":
+            # Treat nodes as objects if they explicitly declare
+            # "type": "object" OR if they have "properties" (many
+            # schemas omit the explicit type).
+            is_object = node.get("type") == "object" or "properties" in node
+            if is_object:
                 node.setdefault("additionalProperties", False)
             # Recurse into properties
             for prop in node.get("properties", {}).values():

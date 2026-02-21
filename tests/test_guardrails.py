@@ -450,6 +450,40 @@ class TestJsonSchemaValidatorStrict:
         result = v.validate('{"data": {"value": 1, "extra": 2}}')
         assert not result.valid
 
+    def test_strict_implicit_object_without_type(self) -> None:
+        """Schemas with ``properties`` but no explicit ``"type": "object"``
+        should still enforce ``additionalProperties: false`` in strict
+        mode."""
+        schema = {
+            "properties": {
+                "name": {"type": "string"},
+            },
+            "required": ["name"],
+        }
+        v = JsonSchemaValidator(schema=schema, strict=True)
+        # Valid — only declared properties
+        result_ok = v.validate('{"name": "Alice"}')
+        assert result_ok.valid
+        # Invalid — extra property
+        result_bad = v.validate('{"name": "Alice", "extra": "nope"}')
+        assert not result_bad.valid
+        assert "additional" in (result_bad.error_message or "").lower()
+
+    def test_strict_implicit_object_nested(self) -> None:
+        """Nested objects without explicit type should also be strict."""
+        schema = {
+            "properties": {
+                "inner": {
+                    "properties": {
+                        "value": {"type": "integer"},
+                    },
+                },
+            },
+        }
+        v = JsonSchemaValidator(schema=schema, strict=True)
+        result = v.validate('{"inner": {"value": 1, "extra": 2}}')
+        assert not result.valid
+
 
 class TestCorrectionTruncation:
     """Tests for correction prompt truncation."""
