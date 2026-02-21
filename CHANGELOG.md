@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.0.2 (2026-02-21)
+
+### Bug Fixes
+
+- Add error-only correction mode to GuardrailLanguageModel; update tests for new behavior
+  ([`32e427a`](https://github.com/IgnatG/langextract-guardrails/commit/32e427a56c549208e782e51018e189587c26e796))
+
+
 ## v1.0.1 (2026-02-21)
 
 ### Bug Fixes
