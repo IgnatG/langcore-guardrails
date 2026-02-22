@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.1.0 (2026-02-22)
+
+### Features
+
+- Introduce new validators using pydantic and OnFailAction enum
+  ([`5c88c9d`](https://github.com/IgnatG/langextract-guardrails/commit/5c88c9d2de66a1f52240eb14dda206d789627766))
+
+
 ## v1.0.4 (2026-02-21)
 
 ### Bug Fixes
