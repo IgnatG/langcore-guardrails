@@ -702,8 +702,8 @@ wheels = [
 ]
 
 [[package]]
-name = "langextract-core"
-version = "1.2.0"
+name = "langcore"
+version = "1.0.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "absl-py" },
@@ -726,19 +726,19 @@ dependencies = [
     { name = "tqdm" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/04/ad/caaa2f8775eddbb09ead3cd5196835753191a910cf17e3285afcdc218cdc/langextract_core-1.2.0.tar.gz", hash = "sha256:088d7cc82c19955997909fc2c9071787b85af9c9842bf032732f601f06b592fe", size = 157055, upload-time = "2026-02-23T09:03:04.401Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/95/ba/ca073650617f1f371f9372e25dcd7dab28c3292f00d4a4c1987861483203/langcore-1.0.1.tar.gz", hash = "sha256:df59abb6469fb297f91da55b0dd306a01fad39b0c1bd3d80790c42190b091fa1", size = 154454, upload-time = "2026-02-23T16:40:58.743Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/60/b6/eb7350986884e714093e05ea64961362e7b15bee55b27f653f5dcb89b137/langextract_core-1.2.0-py3-none-any.whl", hash = "sha256:90e5f6eae836ff0ac1d7914d408672cbd78edff7d124a1eee3c6b40296d76a45", size = 148890, upload-time = "2026-02-23T09:03:02.588Z" },
+    { url = "https://files.pythonhosted.org/packages/ba/3d/b15d9a5ee9bc23fad208a0c4b0d2980549199d0fb801c991bb5b7b717661/langcore-1.0.1-py3-none-any.whl", hash = "sha256:d4870831de34ae121ace9b9d0c9e02365cb866613f4f50e665497bfc97d055bd", size = 136784, upload-time = "2026-02-23T16:40:57.181Z" },
 ]
 
 [[package]]
-name = "langextract-guardrails"
-version = "1.1.0"
+name = "langcore-guardrails"
+version = "1.2.0"
 source = { editable = "." }
 dependencies = [
     { name = "json-repair" },
     { name = "jsonschema" },
-    { name = "langextract-core" },
+    { name = "langcore" },
     { name = "pydantic" },
 ]
 
@@ -753,7 +753,7 @@ dev = [
 requires-dist = [
     { name = "json-repair", specifier = ">=0.58.0" },
     { name = "jsonschema", specifier = ">=4.26.0" },
-    { name = "langextract-core", specifier = ">=1.1.0" },
+    { name = "langcore" },
     { name = "pydantic", specifier = ">=2.12.5" },
 ]
 
