@@ -2,6 +2,24 @@
 
 <!-- version list -->
 
+## v1.3.0 (2026-02-24)
+
+### Documentation
+
+- Update README for clarity and structure; enhance installation and feature sections
+  ([`f1f0190`](https://github.com/IgnatG/langcore-guardrails/commit/f1f019021e52e40f63c530151b6bc06204d3db7e))
+
+### Features
+
+- Add GroundingValidator for enhanced extraction validation and update README and tests
+  ([`3f52f9b`](https://github.com/IgnatG/langcore-guardrails/commit/3f52f9bc8bf725392b0002b5796ba0ebdf493166))
+
+### Refactoring
+
+- Replace ValidationError with GuardrailValidationError for clarity and consistency
+  ([`b0a6b3a`](https://github.com/IgnatG/langcore-guardrails/commit/b0a6b3a7e8143486fe7feb4d05ca3714c06b1c61))
+
+
 ## v1.2.1 (2026-02-23)
 
 ### Bug Fixes
