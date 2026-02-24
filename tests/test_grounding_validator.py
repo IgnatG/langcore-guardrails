@@ -264,6 +264,22 @@ class TestCoverageFiltering:
         passed, filtered = v.validate_extractions([ext], source_text="Acme Corp")
         assert len(passed) == 1
 
+    def test_coverage_capped_at_one(self):
+        """Coverage ratio is capped at 1.0 for spans larger than extraction text."""
+        # Extraction text is 1 char, but span covers 100 chars.
+        # Without cap this would be 100.0; with cap it should be 1.0.
+        text = "A" * 200
+        ext = _Extraction(
+            extraction_text="A",
+            alignment_status=_AlignmentStatus.MATCH_GREATER,
+            char_interval=_CharInterval(0, 100),
+        )
+        v = GroundingValidator(min_coverage=0.9)
+        passed, filtered = v.validate_extractions([ext], source_text=text)
+        # With cap at 1.0, coverage = 1.0 >= 0.9 → passes
+        assert len(passed) == 1
+        assert len(filtered) == 0
+
 
 # ---------------------------------------------------------------------------
 # validate_document convenience method

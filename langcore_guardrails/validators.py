@@ -404,7 +404,7 @@ class ConfidenceThresholdValidator(GuardrailValidator):
     ) -> None:
         if not 0.0 <= min_confidence <= 1.0:
             raise ValueError(
-                f"min_confidence must be in [0.0, 1.0], " f"got {min_confidence}"
+                f"min_confidence must be in [0.0, 1.0], got {min_confidence}"
             )
         self._min_confidence = min_confidence
         self._score_key = score_key
@@ -465,7 +465,7 @@ class ConfidenceThresholdValidator(GuardrailValidator):
                 try:
                     score_f = float(score)
                 except (TypeError, ValueError):
-                    below.append(f"Item {i}: invalid confidence " f"'{score}'")
+                    below.append(f"Item {i}: invalid confidence '{score}'")
                     continue
                 if score_f < self._min_confidence:
                     below.append(
@@ -617,19 +617,13 @@ class FieldCompletenessValidator(GuardrailValidator):
 
         for i, item in enumerate(items):
             if not isinstance(item, dict):
-                errors.append(
-                    f"Item {i}: expected object, " f"got {type(item).__name__}"
-                )
+                errors.append(f"Item {i}: expected object, got {type(item).__name__}")
                 continue
             for field_name in self._required_fields:
                 if field_name not in item:
-                    errors.append(
-                        f"Item {i}: missing required field " f"'{field_name}'"
-                    )
+                    errors.append(f"Item {i}: missing required field '{field_name}'")
                 elif self._is_empty(item[field_name]):
-                    errors.append(
-                        f"Item {i}: required field " f"'{field_name}' is empty"
-                    )
+                    errors.append(f"Item {i}: required field '{field_name}' is empty")
 
         if errors:
             return ValidationResult(
@@ -930,7 +924,7 @@ class GroundingValidator(GuardrailValidator):
                     span_length = max(0, end - start)
                     ext_length = len(ext_text)
                     if ext_length > 0:
-                        coverage = span_length / ext_length
+                        coverage = min(span_length / ext_length, 1.0)
                         if coverage < self._min_coverage:
                             return (
                                 f"'{ext_text}' — coverage "
