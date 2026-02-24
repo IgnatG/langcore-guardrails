@@ -41,7 +41,6 @@ __all__ = [
     "GuardrailValidationError",
     "ValidatorChain",
     "ValidatorEntry",
-    "ValidationError",  # backward-compat alias
     "get_validator",
     "list_validators",
     "register_validator",
@@ -312,7 +311,3 @@ class GuardrailValidationError(Exception):
         super().__init__(message)
         self.validator = validator
         self.result = result
-
-
-# Backward-compatible alias
-ValidationError = GuardrailValidationError

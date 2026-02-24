@@ -210,7 +210,7 @@ The `OnFailAction` enum controls what happens when a validator fails:
 
 | Action | Behaviour |
 |--------|-----------|
-| `EXCEPTION` | Raise a `ValidationError` immediately |
+| `EXCEPTION` | Raise a `GuardrailValidationError` immediately |
 | `REASK` | Re-prompt the LLM with the validation error as feedback |
 | `FILTER` | Silently discard the failing output |
 | `NOOP` | Log the failure but return the output as-is |

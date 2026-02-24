@@ -9,7 +9,6 @@ from langcore_guardrails.provider import GuardrailLanguageModel
 from langcore_guardrails.validator_registry import (
     ChainResult,
     GuardrailValidationError,
-    ValidationError,
     ValidatorChain,
     ValidatorEntry,
     get_validator,
@@ -40,7 +39,6 @@ __all__ = [
     "OnFailAction",
     "RegexValidator",
     "SchemaValidator",
-    "ValidationError",
     "ValidationResult",
     "ValidatorChain",
     "ValidatorEntry",

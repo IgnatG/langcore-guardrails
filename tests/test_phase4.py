@@ -20,9 +20,9 @@ from langcore_guardrails import (
     ConsistencyValidator,
     FieldCompletenessValidator,
     GuardrailValidator,
+    GuardrailValidationError,
     OnFailAction,
     SchemaValidator,
-    ValidationError,
     ValidationResult,
     ValidatorChain,
     ValidatorEntry,
@@ -556,7 +556,7 @@ class TestValidatorChain:
                 OnFailAction.EXCEPTION,
             ),
         ])
-        with pytest.raises(ValidationError, match="critical"):
+        with pytest.raises(GuardrailValidationError, match="critical"):
             chain.run("output")
 
     def test_noop_records_but_passes(self) -> None:
@@ -661,17 +661,17 @@ class TestChainResult:
 
 
 # ---------------------------------------------------------------------------
-# ValidationError tests
+# GuardrailValidationError tests
 # ---------------------------------------------------------------------------
 
 
-class TestValidationError:
-    """Tests for ValidationError exception."""
+class TestGuardrailValidationError:
+    """Tests for GuardrailValidationError exception."""
 
     def test_attributes(self) -> None:
         v = _FailValidator("test")
         vr = ValidationResult(valid=False, error_message="test")
-        exc = ValidationError("msg", validator=v, result=vr)
+        exc = GuardrailValidationError("msg", validator=v, result=vr)
         assert exc.validator is v
         assert exc.result is vr
         assert str(exc) == "msg"
