@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.3.1 (2026-02-24)
+
+### Bug Fixes
+
+- Improve error messages for confidence validation and enhance coverage validation tests
+  ([`e08b9bd`](https://github.com/IgnatG/langcore-guardrails/commit/e08b9bd219258a37ab2d5b918568f7d8251bafbf))
+
+
 ## v1.3.0 (2026-02-24)
 
 ### Documentation
